@@ -1,8 +1,8 @@
-import { Toaster } from "sonner";
 import AddBookForm from "./components/common/AddBookForm";
 import BookList from "./components/common/BookList";
 import FindBook from "./components/common/FindBook";
 import HeaderCustom from "./components/common/HeaderCustom";
+import { Toaster } from "./components/ui/sonner";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <BookList title="Sudah Selesai Dibaca" listId="completeBookList" />
       </main>
 
-      <Toaster />
+      <Toaster richColors position="top-center" />
     </div>
   );
 }
