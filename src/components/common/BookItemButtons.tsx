@@ -1,19 +1,14 @@
 import { useContext } from "react";
 import { Button } from "../ui/button";
-import BooksContext from "@/context/BooksContext";
+import BooksContext, { type Book } from "@/context/BooksContext";
 import { toast } from "sonner";
 
-type BookItemProps = {
-  id: number;
-  isFinishRead: boolean;
-};
-
-const BookItemButtons = ({ id, isFinishRead }: BookItemProps) => {
+const BookItemButtons = ({ id, isFinishRead, ...rest }: Book) => {
   const booksCtx = useContext(BooksContext);
   if (!booksCtx)
     throw new Error("BooksContext belum di-wrap dengan BooksProvider");
 
-  const { toggleRead, removeBook } = booksCtx;
+  const { toggleRead, removeBook, setEditingBook } = booksCtx;
 
   const onDeleteHandler = (id: number) => {
     removeBook(id);
@@ -55,6 +50,7 @@ const BookItemButtons = ({ id, isFinishRead }: BookItemProps) => {
       </Button>
       <Button
         data-testid="bookItemEditButton"
+        onClick={() => setEditingBook({ id, isFinishRead, ...rest })}
         className="text-base bg-chart-4 text-foreground py-2.5 px-5 border-none m-1 hover:scale-105 hover:bg-chart-2"
       >
         Edit Buku

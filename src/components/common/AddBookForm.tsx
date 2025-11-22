@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
 import { Input } from "../ui/input";
@@ -30,16 +30,18 @@ const AddBookForm = () => {
   if (!booksCtx)
     throw new Error("BooksContext belum di-wrap dengan BooksProvider");
 
-  const { addBook } = booksCtx;
+  const { addBook, editBook, editingBook, setEditingBook } = booksCtx;
+
+  const defaultValues: BooksFormValues = {
+    title: "",
+    author: "",
+    year: 0,
+    isFinishRead: false,
+  };
 
   const form = useForm<BooksFormValues>({
     resolver: zodResolver(bookSchema),
-    defaultValues: {
-      title: "",
-      author: "",
-      year: 0,
-      isFinishRead: false,
-    },
+    defaultValues,
   });
 
   const {
@@ -49,10 +51,21 @@ const AddBookForm = () => {
     formState: { errors },
   } = form;
 
-  const onSubmitHandler = (data: BooksFormValues) => {
-    addBook(data);
-    reset();
+  useEffect(() => {
+    if (editingBook) {
+      reset(editingBook);
+    }
+  }, [editingBook, reset]);
 
+  const onSubmitHandler = (data: BooksFormValues) => {
+    if (editingBook) {
+      editBook(editingBook.id, data);
+      setEditingBook(null);
+    } else {
+      addBook(data);
+    }
+
+    reset(defaultValues);
     toast.success("Buku Berhasil disimpan!");
   };
 

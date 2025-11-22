@@ -14,6 +14,8 @@ interface BooksContextType {
   editBook: (id: number, updated: Partial<Book>) => void;
   toggleRead: (id: number) => void;
   removeBook: (id: number) => void;
+  editingBook: Book | null;
+  setEditingBook: (book: Book | null) => void;
 }
 
 const BooksContext = createContext<BooksContextType | null>(null);
@@ -25,6 +27,8 @@ export const BooksProvider = ({ children }: { children: ReactNode }) => {
 
     return saved ? JSON.parse(saved) : [];
   });
+
+  const [editingBook, setEditingBook] = useState<Book | null>(null);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(books));
@@ -63,7 +67,15 @@ export const BooksProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <BooksContext.Provider
-      value={{ books, addBook, editBook, toggleRead, removeBook }}
+      value={{
+        books,
+        addBook,
+        editBook,
+        toggleRead,
+        removeBook,
+        editingBook,
+        setEditingBook,
+      }}
     >
       {children}
     </BooksContext.Provider>

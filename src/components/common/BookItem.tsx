@@ -1,14 +1,7 @@
+import type { Book } from "@/context/BooksContext";
 import BookItemButtons from "./BookItemButtons";
 
-interface BookItemProps {
-  id: number;
-  title: string;
-  author: string;
-  year: number;
-  isFinishRead: boolean;
-}
-
-const BookItem = ({ id, title, author, year, isFinishRead }: BookItemProps) => {
+const BookItem = ({ id, title, author, year, isFinishRead }: Book) => {
   return (
     <div
       data-bookid={id}
@@ -21,7 +14,13 @@ const BookItem = ({ id, title, author, year, isFinishRead }: BookItemProps) => {
       <p data-testid="bookItemAuthor">Penulis: {author}</p>
       <p data-testid="bookItemYear">Tahun: {year}</p>
 
-      <BookItemButtons id={id} isFinishRead={isFinishRead} />
+      <BookItemButtons
+        id={id}
+        title={title}
+        author={author}
+        year={year}
+        isFinishRead={isFinishRead}
+      />
     </div>
   );
 };
