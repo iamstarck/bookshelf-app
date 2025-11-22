@@ -6,7 +6,7 @@ import { Toaster } from "./components/ui/sonner";
 
 function App() {
   return (
-    <div className="flex flex-col items-center bg-primary">
+    <div className="flex flex-col items-center bg-primary md:my-4">
       <HeaderCustom />
 
       <main className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-5 w-[80%]">

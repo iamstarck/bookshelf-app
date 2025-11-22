@@ -59,11 +59,7 @@ const AddBookForm = () => {
   return (
     <section className="bg-card-foreground mb-4 lg:mb-0 p-6 rounded-lg shadow-[5px_5px_15px_rgba(0,0,0,0.5)]">
       <h2 className="text-2xl font-semibold mb-4">Tambah Buku Baru</h2>
-      <form
-        data-testid="bookForm"
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-2.5"
-      >
+      <form data-testid="bookForm" onSubmit={handleSubmit(onSubmit)}>
         <FieldSet>
           <FieldGroup>
             <Field data-invalid={!!errors.title} className="mb-4">
@@ -151,7 +147,7 @@ const AddBookForm = () => {
               data-testid="bookFormSubmitButton"
               className="text-base bg-chart-4 text-foreground py-2.5 px-5 border-none m-1 hover:scale-105 hover:bg-chart-2"
             >
-              Masukkan Buku ke rak
+              Masukkan ke rak
             </Button>
           </FieldGroup>
         </FieldSet>

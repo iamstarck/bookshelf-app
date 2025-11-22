@@ -22,6 +22,7 @@ const STORAGE_KEY = "book";
 export const BooksProvider = ({ children }: { children: ReactNode }) => {
   const [books, setBooks] = useState<Book[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
+
     return saved ? JSON.parse(saved) : [];
   });
 
