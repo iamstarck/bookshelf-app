@@ -12,7 +12,7 @@ interface BooksContextType {
   books: Book[];
   addBook: (book: Omit<Book, "id">) => void;
   editBook: (id: number, updated: Partial<Book>) => void;
-  finishRead: (id: number) => void;
+  toggleRead: (id: number) => void;
   removeBook: (id: number) => void;
 }
 
@@ -49,10 +49,10 @@ export const BooksProvider = ({ children }: { children: ReactNode }) => {
     );
   }
 
-  function finishRead(id: number) {
+  function toggleRead(id: number) {
     setBooks((prev) =>
       prev.map((book) =>
-        book.id === id ? { ...book, isFinishRead: true } : book
+        book.id === id ? { ...book, isFinishRead: !book.isFinishRead } : book
       )
     );
   }
@@ -63,7 +63,7 @@ export const BooksProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <BooksContext.Provider
-      value={{ books, addBook, editBook, finishRead, removeBook }}
+      value={{ books, addBook, editBook, toggleRead, removeBook }}
     >
       {children}
     </BooksContext.Provider>

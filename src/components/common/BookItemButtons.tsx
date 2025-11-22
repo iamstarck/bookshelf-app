@@ -13,7 +13,7 @@ const BookItemButtons = ({ id, isFinishRead }: BookItemProps) => {
   if (!booksCtx)
     throw new Error("BooksContext belum di-wrap dengan BooksProvider");
 
-  const { removeBook } = booksCtx;
+  const { toggleRead, removeBook } = booksCtx;
 
   const onDeleteHandler = (id: number) => {
     removeBook(id);
@@ -21,11 +21,18 @@ const BookItemButtons = ({ id, isFinishRead }: BookItemProps) => {
     toast.success("Buku Berhasil dihapus!");
   };
 
+  const onToggleHandler = (id: number) => {
+    toggleRead(id);
+
+    toast.success("Data Berhasil diperbarui!");
+  };
+
   return (
     <div>
       {isFinishRead ? (
         <Button
           data-testid="bookItemIsCompleteButton"
+          onClick={() => onToggleHandler(id)}
           className="text-base bg-chart-4 text-foreground py-2.5 px-5 border-none m-1 hover:scale-105 hover:bg-chart-2"
         >
           Belum Dibaca
@@ -33,6 +40,7 @@ const BookItemButtons = ({ id, isFinishRead }: BookItemProps) => {
       ) : (
         <Button
           data-testid="bookItemIsCompleteButton"
+          onClick={() => onToggleHandler(id)}
           className="text-base bg-chart-4 text-foreground py-2.5 px-5 border-none m-1 hover:scale-105 hover:bg-chart-2"
         >
           Sudah Dibaca
