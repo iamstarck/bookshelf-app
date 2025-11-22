@@ -21,7 +21,7 @@ const BookItem = ({ id, title, author, year, isFinishRead }: BookItemProps) => {
       <p data-testid="bookItemAuthor">Penulis: {author}</p>
       <p data-testid="bookItemYear">Tahun: {year}</p>
 
-      <BookItemButtons isFinishRead={isFinishRead} />
+      <BookItemButtons id={id} isFinishRead={isFinishRead} />
     </div>
   );
 };

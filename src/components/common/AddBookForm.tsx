@@ -49,17 +49,17 @@ const AddBookForm = () => {
     formState: { errors },
   } = form;
 
-  const onSubmit = (data: BooksFormValues) => {
+  const onSubmitHandler = (data: BooksFormValues) => {
     addBook(data);
     reset();
 
-    toast.success("Data Berhasil disimpan!");
+    toast.success("Buku Berhasil disimpan!");
   };
 
   return (
     <section className="bg-card-foreground mb-4 lg:mb-0 p-6 rounded-lg shadow-[5px_5px_15px_rgba(0,0,0,0.5)]">
       <h2 className="text-2xl font-semibold mb-4">Tambah Buku Baru</h2>
-      <form data-testid="bookForm" onSubmit={handleSubmit(onSubmit)}>
+      <form data-testid="bookForm" onSubmit={handleSubmit(onSubmitHandler)}>
         <FieldSet>
           <FieldGroup>
             <Field data-invalid={!!errors.title} className="mb-4">
