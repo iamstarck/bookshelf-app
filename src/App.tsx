@@ -13,9 +13,9 @@ function App() {
         <AddBookForm />
         <FindBook />
 
-        <BookList title="Belum Selesai Dibaca" listId="incompleteBookList" />
+        <BookList title="Unfinished Books" listId="incompleteBookList" />
 
-        <BookList title="Sudah Selesai Dibaca" listId="completeBookList" />
+        <BookList title="Finished Books" listId="completeBookList" />
       </main>
 
       <Toaster richColors position="top-center" />

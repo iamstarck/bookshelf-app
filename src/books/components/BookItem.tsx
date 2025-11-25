@@ -11,8 +11,8 @@ const BookItem = ({ id, title, author, year, isFinishRead }: Book) => {
       <h3 data-testid="bookItemTitle" className="text-2xl font-semibold mb-1.5">
         {title}
       </h3>
-      <p data-testid="bookItemAuthor">Penulis: {author}</p>
-      <p data-testid="bookItemYear">Tahun: {year}</p>
+      <p data-testid="bookItemAuthor">Author: {author}</p>
+      <p data-testid="bookItemYear">Year: {year}</p>
 
       <BookItemButtons
         id={id}

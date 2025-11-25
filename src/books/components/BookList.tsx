@@ -20,7 +20,7 @@ const BookList = ({ title, listId }: BookListProps) => {
 
       <div id={listId} data-testid={listId}>
         {filteredBooks.length === 0 ? (
-          <p className="text-sm text-muted-foreground">Belum ada buku</p>
+          <p className="text-sm text-muted-foreground">No books available</p>
         ) : (
           filteredBooks.map((book) => (
             <BookItem

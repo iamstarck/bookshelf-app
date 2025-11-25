@@ -19,13 +19,13 @@ const FindBook = () => {
       );
 
     if (results.length === 0) {
-      toast.error("Buku tidak ditemukan!");
+      toast.error("No matching books found");
     }
   };
 
   return (
     <section className="bg-card-foreground mb-4 lg:mb-0 p-6 rounded-lg shadow-[5px_5px_15px_rgba(0,0,0,0.5)]">
-      <h2 className="text-2xl font-semibold mb-4">Cari Buku</h2>
+      <h2 className="text-2xl font-semibold mb-4">Find Books</h2>
       <form
         id="searchBook"
         data-testid="searchBookForm"
@@ -33,7 +33,7 @@ const FindBook = () => {
         className="flex flex-col gap-2.5"
       >
         <Label htmlFor="searchBookTitle" className="font-bold text-lg">
-          Judul
+          Title
         </Label>
         <Input
           id="searchBookTitle"
@@ -50,7 +50,7 @@ const FindBook = () => {
           data-testid="searchBookFormSubmitButton"
           className="text-base bg-chart-4 text-foreground py-2.5 px-5 border-none m-1 hover:scale-105 hover:bg-chart-2"
         >
-          Cari
+          Find
         </Button>
       </form>
     </section>

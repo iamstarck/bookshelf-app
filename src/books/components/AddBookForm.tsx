@@ -65,18 +65,18 @@ const AddBookForm = () => {
     }
 
     reset(defaultValues);
-    toast.success("Buku Berhasil disimpan!");
+    toast.success("Book has been saved.");
   };
 
   return (
     <section className="bg-card-foreground mb-4 lg:mb-0 p-6 rounded-lg shadow-[5px_5px_15px_rgba(0,0,0,0.5)]">
-      <h2 className="text-2xl font-semibold mb-4">Tambah Buku Baru</h2>
+      <h2 className="text-2xl font-semibold mb-4">Add New Book</h2>
       <form data-testid="bookForm" onSubmit={handleSubmit(onSubmitHandler)}>
         <FieldSet>
           <FieldGroup>
             <Field data-invalid={!!errors.title} className="mb-4">
               <FieldLabel htmlFor="bookFormTitle" className="font-bold text-lg">
-                Judul
+                Title
               </FieldLabel>
               <Input
                 id="bookFormTitle"
@@ -97,7 +97,7 @@ const AddBookForm = () => {
                 htmlFor="bookFormAuthor"
                 className="font-bold text-lg"
               >
-                Penulis
+                Author
               </FieldLabel>
               <Input
                 id="bookFormAuthor"
@@ -115,7 +115,7 @@ const AddBookForm = () => {
 
             <Field data-invalid={!!errors.year} className="mb-4">
               <FieldLabel htmlFor="bookFormYear" className="font-bold text-lg">
-                Tahun
+                Year
               </FieldLabel>
               <Input
                 id="bookFormYear"
@@ -136,7 +136,7 @@ const AddBookForm = () => {
                 htmlFor="bookFormIsComplete"
                 className="font-bold text-lg"
               >
-                Selesai dibaca
+                Already Finished?
               </FieldLabel>
               <Controller
                 name="isFinishRead"
@@ -159,7 +159,7 @@ const AddBookForm = () => {
               data-testid="bookFormSubmitButton"
               className="text-base bg-chart-4 text-foreground py-2.5 px-5 border-none m-1 hover:scale-105 hover:bg-chart-2"
             >
-              Masukkan ke rak
+              Put on the shelf
             </Button>
           </FieldGroup>
         </FieldSet>

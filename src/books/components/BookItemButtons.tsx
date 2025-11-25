@@ -11,13 +11,13 @@ const BookItemButtons = ({ id, isFinishRead, ...rest }: Book) => {
   const onDeleteHandler = (id: number) => {
     removeBook(id);
 
-    toast.success("Buku Berhasil dihapus!");
+    toast.success("Book has been removed.");
   };
 
   const onToggleHandler = (id: number) => {
     toggleRead(id);
 
-    toast.success("Data Berhasil diperbarui!");
+    toast.success("Status updated.");
   };
 
   return (
@@ -28,7 +28,7 @@ const BookItemButtons = ({ id, isFinishRead, ...rest }: Book) => {
           onClick={() => onToggleHandler(id)}
           className="text-base bg-chart-4 text-foreground py-2.5 px-5 border-none m-1 hover:scale-105 hover:bg-chart-2"
         >
-          Belum Dibaca
+          Mark as Unread
         </Button>
       ) : (
         <Button
@@ -36,7 +36,7 @@ const BookItemButtons = ({ id, isFinishRead, ...rest }: Book) => {
           onClick={() => onToggleHandler(id)}
           className="text-base bg-chart-4 text-foreground py-2.5 px-5 border-none m-1 hover:scale-105 hover:bg-chart-2"
         >
-          Sudah Dibaca
+          Mark as FInished
         </Button>
       )}
       <Button
@@ -44,14 +44,14 @@ const BookItemButtons = ({ id, isFinishRead, ...rest }: Book) => {
         onClick={() => onDeleteHandler(id)}
         className="text-base bg-chart-4 text-foreground py-2.5 px-5 border-none m-1 hover:scale-105 hover:bg-chart-2"
       >
-        Hapus Buku
+        Delete Book
       </Button>
       <Button
         data-testid="bookItemEditButton"
         onClick={() => setEditingBook({ id, isFinishRead, ...rest })}
         className="text-base bg-chart-4 text-foreground py-2.5 px-5 border-none m-1 hover:scale-105 hover:bg-chart-2"
       >
-        Edit Buku
+        Edit Book
       </Button>
     </div>
   );
