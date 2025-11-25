@@ -1,5 +1,6 @@
 {
   "name": "bookshelf-app",
+  "author": "iamstarck",
   "private": true,
   "version": "0.0.0",
   "type": "module",
