@@ -19,7 +19,7 @@ import { toast } from "sonner";
 const bookSchema = z.object({
   title: z.string().min(1, { error: "Judul wajib diisi" }),
   author: z.string().min(1, { error: "Penulis wajib diisi" }),
-  year: z.number().min(1, "Tahun minimal 1").max(2100, "Tahun maksimal 2100"),
+  year: z.number().min(1, "Min 1"),
   isFinishRead: z.boolean(),
 });
 
