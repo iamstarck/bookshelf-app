@@ -1,7 +1,7 @@
-import AddBookForm from "./components/common/AddBookForm";
-import BookList from "./components/common/BookList";
-import FindBook from "./components/common/FindBook";
-import HeaderCustom from "./components/common/HeaderCustom";
+import AddBookForm from "./books/components/AddBookForm";
+import BookList from "./books/components/BookList";
+import FindBook from "./books/components/FindBook";
+import HeaderCustom from "./components/layout/HeaderCustom";
 import { Toaster } from "./components/ui/sonner";
 
 function App() {

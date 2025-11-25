@@ -1,4 +1,4 @@
-import type { Book } from "@/context/BooksContext";
+import type { Book } from "@/books/store/useBooksStore";
 import BookItemButtons from "./BookItemButtons";
 
 const BookItem = ({ id, title, author, year, isFinishRead }: Book) => {

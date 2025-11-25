@@ -1,18 +1,18 @@
-import { useContext, useEffect } from "react";
-import { Button } from "../ui/button";
-import { Checkbox } from "../ui/checkbox";
-import { Input } from "../ui/input";
+import { useEffect } from "react";
+import { Button } from "../../components/ui/button";
+import { Checkbox } from "../../components/ui/checkbox";
+import { Input } from "../../components/ui/input";
 import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import BooksContext from "@/context/BooksContext";
+import { useBooksStore } from "@/books/store/useBooksStore";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
   FieldSet,
-} from "../ui/field";
+} from "../../components/ui/field";
 import { CircleAlertIcon } from "lucide-react";
 import { toast } from "sonner";
 
@@ -26,11 +26,10 @@ const bookSchema = z.object({
 type BooksFormValues = z.infer<typeof bookSchema>;
 
 const AddBookForm = () => {
-  const booksCtx = useContext(BooksContext);
-  if (!booksCtx)
-    throw new Error("BooksContext belum di-wrap dengan BooksProvider");
-
-  const { addBook, editBook, editingBook, setEditingBook } = booksCtx;
+  const addBook = useBooksStore((s) => s.addBook);
+  const editBook = useBooksStore((s) => s.editBook);
+  const editingBook = useBooksStore((s) => s.editingBook);
+  const setEditingBook = useBooksStore((s) => s.setEditingBook);
 
   const defaultValues: BooksFormValues = {
     title: "",

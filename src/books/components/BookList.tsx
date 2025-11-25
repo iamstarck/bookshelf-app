@@ -1,5 +1,4 @@
-import BooksContext from "@/context/BooksContext";
-import { useContext } from "react";
+import { useFilteredBooks } from "@/books/store/useBooksStore";
 import BookItem from "./BookItem";
 
 type BookListProps = {
@@ -8,11 +7,7 @@ type BookListProps = {
 };
 
 const BookList = ({ title, listId }: BookListProps) => {
-  const booksCtx = useContext(BooksContext);
-  if (!booksCtx)
-    throw new Error("BooksContext belum di-wrap dengan BooksProvider");
-
-  const { books } = booksCtx;
+  const books = useFilteredBooks();
 
   const filteredBooks =
     listId === "incompleteBookList"

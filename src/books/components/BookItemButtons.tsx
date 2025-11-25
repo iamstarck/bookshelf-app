@@ -1,14 +1,12 @@
-import { useContext } from "react";
-import { Button } from "../ui/button";
-import BooksContext, { type Book } from "@/context/BooksContext";
+import { useBooksStore, type Book } from "@/books/store/useBooksStore";
+import { Button } from "@/components/ui/button";
+
 import { toast } from "sonner";
 
 const BookItemButtons = ({ id, isFinishRead, ...rest }: Book) => {
-  const booksCtx = useContext(BooksContext);
-  if (!booksCtx)
-    throw new Error("BooksContext belum di-wrap dengan BooksProvider");
-
-  const { toggleRead, removeBook, setEditingBook } = booksCtx;
+  const toggleRead = useBooksStore((s) => s.toggleRead);
+  const removeBook = useBooksStore((s) => s.removeBook);
+  const setEditingBook = useBooksStore((s) => s.setEditingBook);
 
   const onDeleteHandler = (id: number) => {
     removeBook(id);
