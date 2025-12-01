@@ -17,8 +17,8 @@ import { CircleAlertIcon } from "lucide-react";
 import { toast } from "sonner";
 
 const bookSchema = z.object({
-  title: z.string().min(1, { error: "Judul wajib diisi" }),
-  author: z.string().min(1, { error: "Penulis wajib diisi" }),
+  title: z.string().min(1, { error: "Title is required" }),
+  author: z.string().min(1, { error: "Author is required" }),
   year: z.number().min(1, "Min 1"),
   isFinishRead: z.boolean(),
 });
